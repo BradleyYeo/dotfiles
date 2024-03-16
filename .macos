@@ -14,5 +14,5 @@ sudo nvram SystemAudioVolume=" "
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 
-echo "Applied settings. System reboot required""
+echo "Applied settings. System reboot required"
 
