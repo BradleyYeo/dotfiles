@@ -1,0 +1,29 @@
+[user]
+        name = Bradley Yeo Kian
+        email = yeo.bradley@gmail.com
+        signingkey = A9F84A0B0AEDC3F9B59B6C8E75D3F8C28DC26830
+[filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+[push]
+        default = current
+        autoSetupRemote = true
+[init]
+        defaultBranch = main
+[pull]
+        rebase = false
+        ff = only
+[rebase]
+        autosquash = true
+[rerere]
+        enabled = true
+[help]
+        autocorrect = prompt
+[diff]
+        algorithm = histogram
+[credential]
+        helper = store --file ~/.git-credentials
+[fetch]
+        writeCommitGraph = true
