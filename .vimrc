@@ -1,52 +1,35 @@
-syntax on               " enable syntax highlighting
-set cursorline          " highlight the current line
-" set background=dark   " darker color scheme
-" set ruler             " show line number in bar
-set nobackup            " don't create pointless backup files; Use VCS instead
-set autoread            " watch for file changes
-set number              " show line numbers
-set showcmd             " show selection metadata
-set showmode            " show INSERT, VISUAL, etc. mode
-set showmatch           " show matching brackets
-set autoindent smartindent  " auto/smart indent
-set smarttab            " better backspace and tab functionality
-set scrolloff=5         " show at least 5 lines above/below
-filetype on             " enable filetype detection
-filetype indent on      " enable filetype-specific indenting
-filetype plugin on      " enable filetype-specific plugins
-" colorscheme cobalt      " requires cobalt.vim to be in ~/.vim/colors
+syntax on
+filetype on
 
-" column-width visual indication
-let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=235 guibg=#001D2F
+if $TERM_PROGRAM =~ "iTerm"
+  " Set the title of the Terminal to the currently open file
+  function! SetTerminalTitle()
+      let titleString = expand('%:t')
+      if len(titleString) > 0
+          let &titlestring = expand('%:t')
+          " this is the format iTerm2 expects when setting the window title
+          let args = "\033]1;".&titlestring."\007"
+          let cmd = 'silent !echo -e "'.args.'"'
+          execute cmd
+          redraw!
+      endif
+  endfunction
+autocmd BufEnter * call SetTerminalTitle()
+endif
 
-" tabs and indenting
-set autoindent          " auto indenting
-set smartindent         " smart indenting
-set expandtab           " spaces instead of tabs
-set tabstop=2           " 2 spaces for tabs
-set shiftwidth=2        " 2 spaces for indentation
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+let &t_SR = "\<esc>]50;CursorShape=2\x7" " Underline in replace mode
 
-" bells
-set noerrorbells        " turn off audio bell
-set visualbell          " but leave on a visual bell
-
-" search
-set hlsearch            " highlighted search results
-set showmatch           " show matching bracket
-
-" other
-set guioptions=aAace    " don't show scrollbar in MacVim
-" call pathogen#infect()  " use pathogen
-
-" clipboard
-set clipboard=unnamed   " allow yy, etc. to interact with OS X clipboard
-
-" shortcuts
-map <F2> :NERDTreeToggle<CR>
-
-" remapped keys
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+set et 
+set ts=2 
+set sw=2 
+set sts=2
+set ai 
+set si 
+set hls
+set ic 
+set bg=dark 
+set ve+=onemore
+set nu
+set splitbelow splitright
