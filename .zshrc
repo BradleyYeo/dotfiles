@@ -34,8 +34,9 @@ alias jnb="jupyter lab"
 # git
 alias gst="git status"
 alias gaa="git add --all"
-alias gcm="git commit -m"
+alias gcm="git commit"
 alias gs="git switch"
+alias gsm="git switch main"
 alias gsc="git switch -c"
 alias gdc="git diff --cached"
 
@@ -93,7 +94,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(dotenv z git git-open zsh-syntax-highlighting fast-syntax-highlighting)
+plugins=(dotenv z zsh-syntax-highlighting fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
