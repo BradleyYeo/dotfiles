@@ -32,6 +32,7 @@ alias cct="codecrafters test"
 alias jnb="jupyter lab"
 
 # git
+alias g="git"
 alias gst="git status"
 alias gaa="git add --all"
 alias gcm="git commit"
