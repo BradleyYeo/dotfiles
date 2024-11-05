@@ -1,29 +1,50 @@
 [user]
-        name = Bradley Yeo Kian
-        email = yeo.bradley@gmail.com
-        signingkey = A9F84A0B0AEDC3F9B59B6C8E75D3F8C28DC26830
+	name = Bradley Yeo Kian
+	email = yeo.bradley@gmail.com
+	signingkey = A9F84A0B0AEDC3F9B59B6C8E75D3F8C28DC26830
 [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [push]
-        default = current
-        autoSetupRemote = true
+	default = current
+	autoSetupRemote = true
 [init]
-        defaultBranch = main
+	defaultBranch = main
+	templateDir = /Users/bradleyyeo/.git-template
 [pull]
-        rebase = false
-        ff = only
+	rebase = true 
+	ff = only
 [rebase]
-        autosquash = true
+	autosquash = true
 [rerere]
-        enabled = true
+	enabled = true
 [help]
-        autocorrect = prompt
+	autocorrect = prompt
 [diff]
-        algorithm = histogram
+	algorithm = histogram
 [credential]
-        helper = store --file ~/.git-credentials
+	helper = store --file ~/.git-credentials
 [fetch]
-        writeCommitGraph = true
+	writeCommitGraph = true
+[alias]
+	fpush = push
+	lol = log --graph --oneline --decorate --color --all --pretty=format:'%h %ad - %s' --date=short
+l = "!. ~/.githelpers && pretty_git_log"
+  la = "!git l --all"
+  lr = "!git l -30"
+  lra = "!git lr --all"
+  lg = "!git l -G $1 -- $2"
+  feature = !sh -c 'git checkout --no-track -b $0 origin/main'
+
+  ruf = "!. ~/.githelpers && remove_untracked_files"
+
+	tree = log --oneline --decorate --graph
+
+  # Taken from here: https://aaronbonner.io/post/80766268890/git-alias-to-simplify-setting-upstream-branch
+  sup = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+[http]
+	postBuffer = 120000000
+[core]
+	editor = code --wait

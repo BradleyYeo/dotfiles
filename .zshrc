@@ -11,19 +11,34 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 ZSH_THEME="robbyrussell"
 alias bu="brew cu --all --yes --cleanup --quiet && brew upgrade &&  brew autoremove && brew cleanup && omz update"
 alias bcp="brew autoremove && brew cleanup"
-alias cc="clear"
 alias c.="code ."
 alias d="docker"
+alias dif="difft"
+alias grp="python ~/mac-dev-playbook/files/group_files.py"
+alias gdb="arm-none-eabi-gdb"
 alias o.="open ."
 alias tf="terraform"
+alias tfp="terraform plan"
 alias tfa="terraform apply -auto-approve"
 alias tfd="terraform destroy -auto-approve"
+alias tfv="terraform validate"
+alias tfi="terraform init"
+alias tff="terraform fmt --recursive"
 alias pu="~/./upgrade_pip.sh"
 alias kb="kubectl"
 alias avl="aws-vault login bradley"
-alias avcn="aws-vault login acn-brad"
 alias an="ansible"
 alias cct="codecrafters test"
+alias jnb="jupyter lab"
+
+# git
+alias gst="git status"
+alias gaa="git add --all"
+alias gcm="git commit -m"
+alias gs="git switch"
+alias gsc="git switch -c"
+alias gdc="git diff --cached"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 AWS_SESSION_TTL=3700
@@ -78,7 +93,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git git-open zsh-syntax-highlighting fast-syntax-highlighting)
+plugins=(dotenv z git git-open zsh-syntax-highlighting fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR='vscode'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -117,3 +132,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 source /Users/bradleyyeo/.config/broot/launcher/bash/br
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
