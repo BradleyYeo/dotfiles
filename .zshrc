@@ -41,6 +41,9 @@ alias gs="git switch"
 alias gsm="git switch main"
 alias gsc="git switch -c"
 alias gdc="git diff --cached"
+alias gp="git push"
+alias gpu="git pull"
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
