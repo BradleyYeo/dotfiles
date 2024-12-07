@@ -30,17 +30,11 @@
 	writeCommitGraph = true
 [alias]
 	fpush = push
-	lol = log --graph --oneline --decorate --color --all --pretty=format:'%h %ad - %s' --date=short
-l = "!. ~/.githelpers && pretty_git_log"
-  la = "!git l --all"
-  lr = "!git l -30"
-  lra = "!git lr --all"
-  lg = "!git l -G $1 -- $2"
-  feature = !sh -c 'git checkout --no-track -b $0 origin/main'
+	l = "!. ~/.githelpers && pretty_git_log"
+	lg = "!git l -G $1 -- $2"
+	feature = !sh -c 'git checkout --no-track -b $0 origin/main'
 
-  ruf = "!. ~/.githelpers && remove_untracked_files"
-
-	tree = log --oneline --decorate --graph
+	ruf = "!. ~/.githelpers && remove_untracked_files"
 
   # Taken from here: https://aaronbonner.io/post/80766268890/git-alias-to-simplify-setting-upstream-branch
   sup = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
