@@ -44,6 +44,7 @@ l = "!. ~/.githelpers && pretty_git_log"
 
   # Taken from here: https://aaronbonner.io/post/80766268890/git-alias-to-simplify-setting-upstream-branch
   sup = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+	cm = commit -am
 [http]
 	postBuffer = 120000000
 [core]
