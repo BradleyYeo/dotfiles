@@ -44,7 +44,6 @@ alias gdc="git diff --cached"
 alias gp="git push"
 alias gpu="git pull"
 
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 AWS_SESSION_TTL=3700
