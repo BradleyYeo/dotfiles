@@ -13,6 +13,35 @@ sudo nvram SystemAudioVolume=" "
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 echo "Applied settings. System reboot required"
 
+IMAGE_FOLDER="/Users/bradleyyeo/Documents/Visualise_Value"
+
+# Loop to change desktop background every 30 minutes
+while true; do
+    # Randomly select an image from the folder
+    SELECTED_IMAGE=$(find "$IMAGE_FOLDER" -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" \) | shuf -n 1)
+
+    # Check if an image was found
+    if [ -n "$SELECTED_IMAGE" ]; then
+        # Use AppleScript to set the desktop picture
+        osascript -e 'tell application "Finder" to set desktop picture to POSIX file "$SELECTED_IMAGE"'
+    else
+        echo "No images found in $IMAGE_FOLDER"
+    fi
+
+    # Wait for 30 minutes (1800 seconds)
+    sleep 1800
+done
+
+sudo osascript -e 'set volume output volume 10'
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+
+defaults write com.apple.appstore InAppReviewEnabled -int 0
